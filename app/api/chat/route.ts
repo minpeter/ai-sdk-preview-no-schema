@@ -1,5 +1,5 @@
 import { streamObject } from "ai";
-import { openai } from "@ai-sdk/openai";
+import { friendli } from "@friendliai/ai-provider";
 import * as cheerio from "cheerio";
 
 export async function POST(req: Request) {
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   const cleanText = strippedText.replace(/\s+/g, " ");
 
   const result = await streamObject({
-    model: openai("gpt-4-turbo"),
+    model: friendli("meta-llama-3.1-70b-instruct"),
     system: `\
       - for the following webpage, generate a JSON schema based on the user prompt
       - use camelCase for keys
